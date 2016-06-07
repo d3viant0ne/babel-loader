@@ -7,6 +7,7 @@ var cache = require('./lib/fs-cache.js');
 var exists = require('./lib/helpers/exists')();
 var read = require('./lib/helpers/read')();
 var resolveRc = require('./lib/resolve-rc.js');
+var relative = require('./lib/helpers/relative');
 var pkg = require('./package.json');
 var path = require('path');
 
@@ -57,7 +58,7 @@ module.exports = function(source, inputSourceMap) {
   }
 
   if (options.sourceFileName === undefined) {
-    options.sourceFileName = path.relative(
+    options.sourceFileName = relative(
         options.sourceRoot,
         options.filename
     );
